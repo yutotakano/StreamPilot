@@ -14,7 +14,7 @@ set(SDL_macos_resize_patch git apply ${PROJECT_SOURCE_DIR}/SDL_cocoametalview_re
 FetchContent_Declare(
   SDL
   GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
-  GIT_TAG release-3.2.4
+  GIT_TAG release-3.2.28
   GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE
   PATCH_COMMAND ${SDL_macos_resize_patch}
@@ -35,7 +35,7 @@ FetchContent_MakeAvailable(SDL_ttf)
 FetchContent_Declare(
   SDL_image
   GIT_REPOSITORY "https://github.com/libsdl-org/SDL_image.git"
-  GIT_TAG release-3.2.0
+  GIT_TAG release-3.2.4
   GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE
 )
