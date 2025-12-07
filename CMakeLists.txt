@@ -12,32 +12,32 @@ include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE)
 set(SDL_macos_resize_patch git apply ${PROJECT_SOURCE_DIR}/SDL_cocoametalview_resize.patch)
 FetchContent_Declare(
-	SDL
-	GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
-	GIT_TAG release-3.2.4
-	GIT_SHALLOW TRUE
-	GIT_PROGRESS TRUE
-	PATCH_COMMANT ${SDL_macos_resize_patch}
+  SDL
+  GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
+  GIT_TAG release-3.2.4
+  GIT_SHALLOW TRUE
+  GIT_PROGRESS TRUE
+  PATCH_COMMANT ${SDL_macos_resize_patch}
 )
 FetchContent_MakeAvailable(SDL)
 
 
 FetchContent_Declare(
-	SDL_ttf
-	GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
-	GIT_TAG release-3.2.2
-	GIT_SHALLOW TRUE
-	GIT_PROGRESS TRUE
+  SDL_ttf
+  GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
+  GIT_TAG release-3.2.2
+  GIT_SHALLOW TRUE
+  GIT_PROGRESS TRUE
 )
 FetchContent_MakeAvailable(SDL_ttf)
 
 
 FetchContent_Declare(
-	SDL_image
-	GIT_REPOSITORY "https://github.com/libsdl-org/SDL_image.git"
-	GIT_TAG release-3.2.0
-	GIT_SHALLOW TRUE
-	GIT_PROGRESS TRUE
+  SDL_image
+  GIT_REPOSITORY "https://github.com/libsdl-org/SDL_image.git"
+  GIT_TAG release-3.2.0
+  GIT_SHALLOW TRUE
+  GIT_PROGRESS TRUE
 )
 FetchContent_MakeAvailable(SDL_image)
 
