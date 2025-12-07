@@ -17,7 +17,7 @@ FetchContent_Declare(
   GIT_TAG release-3.2.4
   GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE
-  PATCH_COMMANT ${SDL_macos_resize_patch}
+  PATCH_COMMAND ${SDL_macos_resize_patch}
 )
 FetchContent_MakeAvailable(SDL)
 
