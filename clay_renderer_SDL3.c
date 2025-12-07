@@ -1,4 +1,5 @@
 #include "external/clay/clay.h"
+#include <stdlib.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
@@ -28,8 +29,8 @@ static void SDL_Clay_RenderFillRoundedRect(Clay_SDL3RendererData *rendererData, 
     int totalVertices = 4 + (4 * (numCircleSegments * 2)) + 2*4;
     int totalIndices = 6 + (4 * (numCircleSegments * 3)) + 6*4;
 
-    SDL_Vertex vertices[totalVertices];
-    int indices[totalIndices];
+    SDL_Vertex *vertices = malloc(sizeof(SDL_Vertex) * totalVertices);
+    int *indices = malloc(sizeof(int) * totalIndices);
 
     //define center rectangle
     vertices[vertexCount++] = (SDL_Vertex){ {rect.x + clampedRadius, rect.y + clampedRadius}, color, {0, 0} }; //0 center TL
@@ -128,7 +129,7 @@ static void SDL_Clay_RenderArc(Clay_SDL3RendererData *rendererData, const SDL_FP
     const float thicknessStep = 0.4f; //arbitrary value to avoid overlapping lines. Changing THICKNESS_STEP or numCircleSegments might cause artifacts.
 
     for (float t = thicknessStep; t < thickness - thicknessStep; t += thicknessStep) {
-        SDL_FPoint points[numCircleSegments + 1];
+        SDL_FPoint *points = malloc(sizeof(SDL_FPoint) * (numCircleSegments + 1));
         const float clampedRadius = SDL_max(radius - t, 1.0f);
 
         for (int i = 0; i <= numCircleSegments; i++) {
