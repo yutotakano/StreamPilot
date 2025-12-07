@@ -44,4 +44,6 @@ FetchContent_MakeAvailable(SDL_image)
 include_directories(external)
 
 add_executable(${PROJECT_NAME} main.c)
+set_property(TARGET ${PROJECT_NAME} PROPERTY C_STANDARD 17)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 SDL3_ttf::SDL3_ttf SDL3_image::SDL3_image)
