@@ -10,12 +10,14 @@ set(BUILD_GAMES    OFF CACHE BOOL "" FORCE) # don't build the supplied example g
 
 include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE)
+set(SDL_macos_resize_patch git apply ${PROJECT_SOURCE_DIR}/SDL_cocoametalview_resize.patch)
 FetchContent_Declare(
 	SDL
 	GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
 	GIT_TAG release-3.2.4
 	GIT_SHALLOW TRUE
 	GIT_PROGRESS TRUE
+	PATCH_COMMANT ${SDL_macos_resize_patch}
 )
 FetchContent_MakeAvailable(SDL)
 

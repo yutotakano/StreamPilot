@@ -1,0 +1,35 @@
+diff --git a/src/video/cocoa/SDL_cocoametalview.m b/src/video/cocoa/SDL_cocoametalview.m
+index d856645..737aa31 100644
+--- a/src/video/cocoa/SDL_cocoametalview.m
++++ b/src/video/cocoa/SDL_cocoametalview.m
+@@ -69,7 +69,15 @@ static bool SDLCALL SDL_MetalViewEventWatch(void *userdata, SDL_Event *event)
+  */
+ - (CALayer *)makeBackingLayer
+ {
+-    return [self.class.layerClass layer];
++    CAMetalLayer *metalLayer = [self.class.layerClass layer];
++
++    // Allow CA to resize the layer properly
++    metalLayer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
++
++    // Important for live-resize: redraw instead of stretching old frames
++    metalLayer.needsDisplayOnBoundsChange = YES;
++
++    return metalLayer;
+ }
+ 
+ - (instancetype)initWithFrame:(NSRect)frame
+@@ -86,6 +94,13 @@ static bool SDLCALL SDL_MetalViewEventWatch(void *userdata, SDL_Event *event)
+         // Allow resize.
+         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+ 
++        // We want to redraw the layer during live window resize.
++        self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawDuringViewResize;
++
++        // Not strictly necessary, but in case something goes wrong with live window
++        // resize, this layer placement makes it more obvious what's going wrong.
++        self.layerContentsPlacement = NSViewLayerContentsPlacementTopLeft;
++
+         self.layer.opaque = opaque;
+ 
+         SDL_AddEventWatch(SDL_MetalViewEventWatch, (__bridge void *)(self));
