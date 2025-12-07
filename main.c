@@ -26,7 +26,7 @@ typedef struct app_state {
 } AppState;
 
 SDL_Texture *sample_image;
-bool show_demo = false;
+bool show_demo = true;
 
 static inline Clay_Dimensions SDL_MeasureText(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData)
 {
@@ -87,7 +87,8 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    // SDL_SetHint(SDL_HINT_MAC_SCROLL_MOMENTUM, "1");
+    SDL_SetHint(SDL_HINT_MAC_SCROLL_MOMENTUM, "1");
+    SDL_SetHint(SDL_HINT_MAC_BACKGROUND_APP, "0");
 
     AppState *state = SDL_calloc(1, sizeof(AppState));
     if (!state) {
