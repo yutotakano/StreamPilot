@@ -1,7 +1,12 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 4.1.0)
 project(StreamPilot C)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 17)
+if(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
+  add_compile_options(/MP /std:c17)
+endif()
 
 file(DOWNLOAD https://raw.githubusercontent.com/nicbarker/clay/refs/heads/main/clay.h ${PROJECT_SOURCE_DIR}/external/clay/clay.h)
 
