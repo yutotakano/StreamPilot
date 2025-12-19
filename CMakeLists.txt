@@ -21,7 +21,8 @@ FetchContent_Declare(
   GIT_TAG release-3.2.28
   GIT_SHALLOW TRUE
   GIT_PROGRESS TRUE
-  PATCH_COMMAND ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git checkout -q . && ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply ${PROJECT_SOURCE_DIR}/SDL_cocoametalview_resize.patch
+  PATCH_COMMAND ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git checkout -q .
+  COMMAND ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply ${PROJECT_SOURCE_DIR}/SDL_cocoametalview_resize.patch
 )
 FetchContent_MakeAvailable(SDL)
 
