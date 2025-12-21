@@ -36,7 +36,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL_ttf)
 
-
+set(SDL3IMAGE_AVIF_VENDORED OFF)
 FetchContent_Declare(
   SDL_image
   GIT_REPOSITORY "https://github.com/libsdl-org/SDL_image.git"
